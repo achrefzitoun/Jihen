@@ -1,15 +1,36 @@
-<div *ngFor="let person of listPerson">
-    <div>
-      <strong>ID:</strong> {{ person.id }}<br>
-      <strong>Age:</strong> {{ person.age }}<br>
-      <strong>Date de naissance:</strong> {{ person.dob }}<br>
-      <strong>Email:</strong> {{ person.email }}<br>
-      <strong>Salaire:</strong> {{ person.salary }}<br>
-      <strong>Adresse:</strong> {{ person.address }}<br>
-      <strong>Image URL:</strong> {{ person.imageUrl }}<br>
-      <strong>Nom:</strong> {{ person.lastName }}<br>
-      <strong>Prénom:</strong> {{ person.firstName }}<br>
-      <strong>Numéro de contact:</strong> {{ person.contactNumber }}<br>
-    </div>
-    <hr>
-  </div>
+<mat-paginator [length]="dataSource.data.length" [pageSize]="10"  (page)="onPageChange($event)"></mat-paginator>
+
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Age</th>
+        <th>Date de naissance</th>
+        <th>Email</th>
+        <th>Salaire</th>
+        <th>Adresse</th>
+        <th>Image URL</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Numéro de contact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let person of listPerson | paginate: { itemsPerPage: 10, currentPage: page, id: 'server' }">
+        <td>{{ person.id }}</td>
+        <td>{{ person.age }}</td>
+        <td>{{ person.dob }}</td>
+        <td>{{ person.email }}</td>
+        <td>{{ person.salary }}</td>
+        <td>{{ person.address }}</td>
+        <td>{{ person.imageUrl }}</td>
+        <td>{{ person.lastName }}</td>
+        <td>{{ person.firstName }}</td>
+        <td>{{ person.contactNumber }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  
+  
+  
